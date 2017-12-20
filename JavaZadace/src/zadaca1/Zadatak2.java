@@ -1,4 +1,4 @@
-package Zadaca1;
+package zadaca1;
 
 import javax.swing.JOptionPane;
 
@@ -6,7 +6,7 @@ public class Zadatak2 {
 
 	public static void main(String[] args) {
 		
-		//U programu omgućite unos dvije stranice pravokutnika i izračunajte njegovu površinu i opseg
+		//U programu omgućite unos dvije stranice pravokutnika i izra�?unajte njegovu površinu i opseg
 		
 		int a = Integer.parseInt(JOptionPane.showInputDialog("Unesite stranicu a"));
 		int b = Integer.parseInt(JOptionPane.showInputDialog("Unesite stranicu b"));

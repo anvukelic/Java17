@@ -1,4 +1,4 @@
-package Zadaca2;
+package zadaca2;
 
 import javax.swing.JOptionPane;
 

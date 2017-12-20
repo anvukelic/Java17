@@ -1,4 +1,4 @@
-package Zadaca2;
+package zadaca2;
 
 import javax.swing.JOptionPane;
 
@@ -7,8 +7,8 @@ public class Zadatak1 {
 	public static void main(String[] args) {
 
 		/*
-		 * Učitajte 2 broja za određivanje intervala Ako je prvi veći od drugog, napravi zamjenu 
-		 * Učitajte 3. broj i provjerite ulazi li taj broj u interval i ako ulazi koliko je udaljen od krajeva intervala 
+		 * U�?itajte 2 broja za određivanje intervala Ako je prvi veći od drugog, napravi zamjenu 
+		 * U�?itajte 3. broj i provjerite ulazi li taj broj u interval i ako ulazi koliko je udaljen od krajeva intervala 
 		 * U protivnom ispišite da broj ne pripada unesenom intervalu
 		 */
 		int x = Integer.parseInt(JOptionPane.showInputDialog("Unesi prvi broj"));
