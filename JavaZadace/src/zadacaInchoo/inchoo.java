@@ -2,70 +2,91 @@ package zadacaInchoo;
 
 import javax.swing.JOptionPane;
 
+////ZADATAK:
+//Na osnovu unesenih redova i kolona generirati tablicu u kojoj
+//u doljem desnom uglu se poèinje s brojem jedan. Brojevi se uveæavaju za 1 
+//u smjeru kazaljke na satu sve do broja redova*kolona.
+
 public class inchoo {
 
 	public static void main(String[] args) {
 
+		// Ucitavanje redaka i stupaca matrice
 		int brojRedaka = Integer.parseInt(JOptionPane.showInputDialog("Unesite broj redaka"));
 		int brojStupaca = Integer.parseInt(JOptionPane.showInputDialog("Unesite broj stupaca"));
 
-		int i = brojRedaka-1;
-		int j = brojStupaca-1;
+		// Pomocne varijable koje ce se mijenjati za potrebu prolaženja kroz matricu
+		int i = brojRedaka - 1;
+		int j = brojStupaca - 1;
 
+		
 		int uvlacenje = 0;
-		int skretac = 1;
+		
+		//prati broj zavoja
+		int skretac = 1;		
+		// 1 - [brojRedaka, 0], 2 - [0,brojStupaca], 3 - [0,0], 4 - [brojRedaka, brojStupaca]
 		int zavoj = 0;
+		// 1 - lijevo, 2 - desno, 3 - gore, 4 - dolje
+		int smjerKretanja = 1;
 
-		int smjer = 1;
-
+		// Deklariranje matrice
 		int matricaPuz[][] = new int[brojRedaka][brojStupaca];
 
 		for (int x = 1; x <= brojRedaka * brojStupaca; x++) {
-			switch(zavoj){
+			//Nakon zavoja potrebno je pomjeriti se za jedno polje kako bi se spirala dobro nastavila
+			switch (zavoj) {
 			case 1:
-				i--; zavoj = 0;
+				i--;
+				zavoj = 0;
 				break;
 			case 2:
-				i++; zavoj = 0; uvlacenje++;
+				i++;
+				zavoj = 0;
+				uvlacenje++;
 				break;
 			case 3:
-				j++; zavoj = 0;
+				j++;
+				zavoj = 0;
 				break;
 			case 4:
-				j--; zavoj = 0; 
+				j--;
+				zavoj = 0;
 				break;
 			default:
 				break;
 			}
+			
+			//Upisivanje u matricu
 			matricaPuz[i][j] = x;
+			
+			//Kretanje kroz matricu
 			if (skretac % 2 != 0) {
-				if (smjer == 1) {
+				if (smjerKretanja == 1) {
 					if (j == uvlacenje) {
 						skretac++;
-						smjer=3;
+						smjerKretanja = 3;
 						zavoj = 1;
 						continue;
 					} else {
 						j--;
 						continue;
 					}
-					
 				}
-				if (smjer == 2) {
-					
-					if (j == brojStupaca-1 - uvlacenje) {
+				if (smjerKretanja == 2) {
+
+					if (j == brojStupaca - 1 - uvlacenje) {
 						skretac++;
-						smjer=4;
+						smjerKretanja = 4;
 						zavoj = 2;
 					} else {
 						j++;
 					}
 				}
 			} else {
-				if (smjer == 3) {
+				if (smjerKretanja == 3) {
 					if (i == uvlacenje) {
 						skretac++;
-						smjer=2;
+						smjerKretanja = 2;
 						zavoj = 3;
 						continue;
 					} else {
@@ -73,17 +94,19 @@ public class inchoo {
 						continue;
 					}
 				}
-				if (smjer == 4) {
-					if (i == brojRedaka-1 - uvlacenje) {
+				if (smjerKretanja == 4) {
+					if (i == brojRedaka - 1 - uvlacenje) {
 						skretac++;
-						smjer=1;
+						smjerKretanja = 1;
 						zavoj = 4;
 					} else {
 						i++;
-					}					
+					}
 				}
 			}
 		}
+		
+		//ispisivanje matrice
 		for (i = 0; i < brojRedaka; i++) {
 			for (j = 0; j < brojStupaca; j++) {
 				System.out.printf("%2d ", matricaPuz[i][j]);
